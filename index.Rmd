@@ -1,0 +1,499 @@
+---
+title: "Introduzione a Git, GitHub e GitKraken"
+subtitle: "Master MLT"
+author: "Corrado Lanera"
+institute: "Unit of Biostatistics, Epidemiology, and Public Health --- University of Padova"
+date: "2021-07-28 --- Zoom meeting"
+output:
+  xaringan::moon_reader:
+    chakra: libs/remark-latest.min.js
+    seal: false
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+library(knitr)
+library(xaringanExtra)
+
+library(countdown)
+
+opts_chunk$set(
+  message = FALSE,
+  comment = "",
+  fig.dim  = c(5, 4.5),
+  out.width = "100%"
+)
+
+options(width = 59) # fit into the rigth-column slides
+
+```
+
+
+
+class: center, top, bg_title, hide-count
+
+# .alert[Introduzione a Git]
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+.orange[Master MLT]<br><br>--- University of Padova
+
+\- Zoom, 2021/07/28 -
+
+
+
+```{css, echo=FALSE}
+pre {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+.inverse {
+  background-color: #272822;
+  color: #d6d6d6;
+  text-shadow: 0 0 20px #333;
+}
+.left-code {
+  color: #777;
+  width: 38%;
+  height: 92%;
+  float: left;
+}
+.right-code {
+  color: #777;
+  width: 55%;
+  height: 92%;
+  float: right;
+  padding-top: 0.5em;
+}
+.left-plot {
+  width: 43%;
+  float: left;
+}
+.right-plot {
+  width: 60%;
+  float: right;
+}
+
+.full-line {
+  width: 100%;
+  float:left
+}
+.remark-code {
+  font-size: 60%;
+}
+
+.bg_title {
+  position: relative;
+  z-index: 1;
+}
+
+.bg_title::before {    
+      content: "";
+      background-image: url('img/bg_title.png');
+      background-size: contain;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.5;
+      z-index: -1;
+}
+
+.hide-count .remark-slide-number {
+  display: none;
+}
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+```
+
+```{r xaringan-tachyons, echo=FALSE}
+xaringanExtra::use_tachyons()
+```
+
+
+
+---
+class: inverse, center, bottom, hide-count
+
+
+
+.right[
+
+```{r, echo=FALSE, out.width = "40%"}
+knitr::include_graphics(c("img/profilo_CL.jpg"))
+```
+
+# Potete contattarmi su...
+
+[`r anicon::faa("envelope", animate = "passing")`](mailto:corrado.lanera@ubep.unipd.it) [corrado.lanera@ubep.unipd.it](mailto:corrado.lanera@ubep.unipd.it)
+
+[`r anicon::faa("link", animate = "shake")`](https://www.CorradoLanera.it) [www.CorradoLanera.it](https://www.CorradoLanera.it)
+
+[`r anicon::faa("twitter", animate = "float")`](https://twitter.com/corradolanera) [@CorradoLanera](https://twitter.com/corradolanera)
+
+[`r anicon::faa("telegram-plane", animate = "vertical")`](https://telegram.me/CorradoLanera) [@CorradoLanera](https://telegram.me/CorradoLanera)
+
+[`r anicon::faa("calendar-check")`](https://calendly.com/corradolanera) [calendly.com/corradolanera](https://calendly.com/corradolanera)
+
+]
+
+
+
+---
+class: hide-count
+
+
+# .orange[Outline]
+
+- Git
+
+- GitKraken
+
+- GitHub
+
+
+
+
+
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Git]
+
+
+
+---
+
+ 
+# Why a version-control system
+
+
+.can-edit.key-likes[
+- Evitare moltitudine di file con nomi diversi per le versioni
+- capire aggiunte ed eliminazione tra versioni
+- Controllo conflitti tra una versione e un'altra (per esempio modificate da persone differenti contemporaneamente)
+- Unione di versioni assime (check compatibilità di modifiche effettuate da persone differenti)
+- Permettere di fare tentativi (mantenendone traccia senza occupare spazio nel codice "ufficiale")
+- tenere traccia di chi e quando modifica/aggiunge/toglie che cosa
+log della storia del progetto e delle sue diramazioni
+- thing one
+- thing two
+]
+
+
+---
+
+# .orange[GitKraken]
+
+- A GUI for git (and GitHub)
+
+
+
+---
+class: inverse, middle, hide-count
+
+# .orange[Installation, check and setup]
+
+- Git
+
+- GitKraken (https://www.gitkraken.com/invite/fas3vkyk)
+
+
+
+
+---
+
+# Workspace, stage, and commits
+
+- The workspace is the place in which you work
+
+- The stage is the place in which things are ready to be committed
+
+- Commits are snapshot of your project
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Live demo]
+
+
+.left[
+## Git
+
+- New repo
+- Stage
+- Commit (and messages)
+
+
+## GitKraken
+
+- Tabs
+- Create a project
+- Understand the tree
+]
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Your turn]
+
+.left[
+- create a project
+- create a file
+- stage that file
+- modify the file
+
+> what happened?
+
+> what if you stage the new file?
+
+> what if you unstage the old staged file?
+
+- commit the file
+]
+
+
+
+```{r, echo=FALSE}
+countdown(minutes = 5)
+```
+
+
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Git]
+
+
+---
+
+# .orange[Branches]
+
+- Track projects' ... branches
+
+- Allow for
+
+  - explorations
+  - development versioning
+  - subtasks
+  - ...
+  
+## Practical examples
+
+.can-edit.key-branch-example[
+- thing one
+- thing two
+]
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Live demo]
+
+.left[
+## Git
+
+- Create Branches
+  - current commit
+  - past commits
+- Merge branches
+
+
+## GitKraken
+
+- Branch
+- Merge
+]
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Your turn]
+
+
+.left[
+- add some commits
+- create a branch
+- add some commit
+- merge the two branches
+
+- start a branch from a past commit
+- made some different changes
+
+> where in the tree the changes happenes?
+> can you merge that branch with the current?
+]
+
+```{r, echo=FALSE}
+countdown(minutes = 5)
+```
+
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+
+# .orange[Live demo]
+
+.left[
+> WARNING: deleating a branch
+
+what can happen?
+
+.can-edit.key-branch-delete[
+- thing one
+- thing two
+]
+]
+
+
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[GitHub]
+
+---
+
+# .orange[GitHub]
+
+
+- remote platform hosting git repository
+
+- backup
+
+- collaboration
+
+
+
+---
+
+# .orange[Account, check and setup]
+
+- GitKraken
+
+  - link ssh key to GitHub
+
+- R
+
+  - {remotes}
+    - `remotes::install_github()`
+    
+  - {usethis}
+    - `usethis::create_github_token()`
+    
+  - {gitcreds}
+    - `gitcreds::gitcreds_get()`
+    - `gitcreds::gitcreds_set()`
+    - `gitcreds::gitcreds_get()$password`
+
+
+
+
+---
+
+# .orange[GitHub: collaborating]
+
+- Collaborators
+
+- Issues'tracker
+
+- Pull Request
+
+<br>
+<br>
+
+- (Forks)
+
+
+---
+class: inverse, middle, center, hide-count
+
+
+# .orange[Live demo]
+
+.left[
+- Issue
+- Pull Request
+]
+
+---
+class: inverse, middle, center, hide-count
+
+
+# .orange[Your Turn]
+
+.left[
+- create an issue
+
+- Pull Request a branch in your own project
+
+- collaborate or fork a project of one of your peers
+
+- Do some modification
+
+- Pull request
+]
+
+```{r, echo=FALSE}
+countdown(minutes = 10)
+```
+
+
+---
+class: inverse, center, middle, hide-count
+
+# Thanks!
+
+# `r anicon::faa('thumbs-up', animate='float', size=5)`
+
+<br>
+
+.right[
+[`r anicon::faa("envelope", animate = "passing")`](mailto:corrado.lanera@ubep.unipd.it) [corrado.lanera@ubep.unipd.it](mailto:corrado.lanera@ubep.unipd.it)
+
+[`r anicon::faa("calendar-check")`](https://calendly.com/corradolanera) [calendly.com/corradolanera](https://calendly.com/corradolanera)
+
+]
+

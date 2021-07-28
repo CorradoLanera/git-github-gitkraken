@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduzione a Git, GitHub e GitKraken</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Corrado Lanera" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x7bfe4af4a894c588881161b94366b6e","expires":1}</script>
+    <script src="libs/himalaya/himalaya.js"></script>
+    <script src="libs/js-cookie/js.cookie.js"></script>
+    <link href="libs/editable/editable.css" rel="stylesheet" />
+    <script src="libs/editable/editable.js"></script>
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+class: center, top, bg_title, hide-count
+
+# .alert[Introduzione a Git]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+.orange[Master MLT]&lt;br&gt;&lt;br&gt;--- University of Padova
+
+\- Zoom, 2021/07/28 -
+
+
+
+&lt;style type="text/css"&gt;
+pre {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+.inverse {
+  background-color: #272822;
+  color: #d6d6d6;
+  text-shadow: 0 0 20px #333;
+}
+.left-code {
+  color: #777;
+  width: 38%;
+  height: 92%;
+  float: left;
+}
+.right-code {
+  color: #777;
+  width: 55%;
+  height: 92%;
+  float: right;
+  padding-top: 0.5em;
+}
+.left-plot {
+  width: 43%;
+  float: left;
+}
+.right-plot {
+  width: 60%;
+  float: right;
+}
+
+.full-line {
+  width: 100%;
+  float:left
+}
+.remark-code {
+  font-size: 60%;
+}
+
+.bg_title {
+  position: relative;
+  z-index: 1;
+}
+
+.bg_title::before {    
+      content: "";
+      background-image: url('img/bg_title.png');
+      background-size: contain;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.5;
+      z-index: -1;
+}
+
+.hide-count .remark-slide-number {
+  display: none;
+}
+&lt;/style&gt;
+
+
+
+
+
+
+
+---
+class: inverse, center, bottom, hide-count
+
+
+
+.right[
+
+&lt;img src="img/profilo_CL.jpg" width="40%" /&gt;
+
+# Potete contattarmi su...
+
+[<span>&lt;i class="fas  fa-envelope faa-passing animated "&gt;&lt;/i&gt;</span>](mailto:corrado.lanera@ubep.unipd.it) [corrado.lanera@ubep.unipd.it](mailto:corrado.lanera@ubep.unipd.it)
+
+[<span>&lt;i class="fas  fa-link faa-shake animated "&gt;&lt;/i&gt;</span>](https://www.CorradoLanera.it) [www.CorradoLanera.it](https://www.CorradoLanera.it)
+
+[<span>&lt;i class="fab  fa-twitter faa-float animated "&gt;&lt;/i&gt;</span>](https://twitter.com/corradolanera) [@CorradoLanera](https://twitter.com/corradolanera)
+
+[<span>&lt;i class="fab  fa-telegram-plane faa-vertical animated "&gt;&lt;/i&gt;</span>](https://telegram.me/CorradoLanera) [@CorradoLanera](https://telegram.me/CorradoLanera)
+
+[<span>&lt;i class="fas  fa-calendar-check faa-flash animated "&gt;&lt;/i&gt;</span>](https://calendly.com/corradolanera) [calendly.com/corradolanera](https://calendly.com/corradolanera)
+
+]
+
+
+
+---
+class: hide-count
+
+
+# .orange[Outline]
+
+- Git
+
+- GitKraken
+
+- GitHub
+
+
+
+
+
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Git]
+
+
+
+---
+
+ 
+# Why a version-control system
+
+
+.can-edit.key-likes[
+- Evitare moltitudine di file con nomi diversi per le versioni
+- capire aggiunte ed eliminazione tra versioni
+- Controllo conflitti tra una versione e un'altra (per esempio modificate da persone differenti contemporaneamente)
+- Unione di versioni assime (check compatibilità di modifiche effettuate da persone differenti)
+- Permettere di fare tentativi (mantenendone traccia senza occupare spazio nel codice "ufficiale")
+- tenere traccia di chi e quando modifica/aggiunge/toglie che cosa
+log della storia del progetto e delle sue diramazioni
+- thing one
+- thing two
+]
+
+
+---
+
+# .orange[GitKraken]
+
+- A GUI for git (and GitHub)
+
+
+
+---
+class: inverse, middle, hide-count
+
+# .orange[Installation, check and setup]
+
+- Git
+
+- GitKraken (https://www.gitkraken.com/invite/fas3vkyk)
+
+
+
+
+---
+
+# Workspace, stage, and commits
+
+- The workspace is the place in which you work
+
+- The stage is the place in which things are ready to be committed
+
+- Commits are snapshot of your project
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Live demo]
+
+
+.left[
+## Git
+
+- New repo
+- Stage
+- Commit (and messages)
+
+
+## GitKraken
+
+- Tabs
+- Create a project
+- Understand the tree
+]
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Your turn]
+
+.left[
+- create a project
+- create a file
+- stage that file
+- modify the file
+
+&gt; what happened?
+
+&gt; what if you stage the new file?
+
+&gt; what if you unstage the old staged file?
+
+- commit the file
+]
+
+
+
+<div class="countdown" id="timer_61015d68" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Git]
+
+
+---
+
+# .orange[Branches]
+
+- Track projects' ... branches
+
+- Allow for
+
+  - explorations
+  - development versioning
+  - subtasks
+  - ...
+  
+## Practical examples
+
+.can-edit.key-branch-example[
+- thing one
+- thing two
+]
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Live demo]
+
+.left[
+## Git
+
+- Create Branches
+  - current commit
+  - past commits
+- Merge branches
+
+
+## GitKraken
+
+- Branch
+- Merge
+]
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[Your turn]
+
+
+.left[
+- add some commits
+- create a branch
+- add some commit
+- merge the two branches
+
+- start a branch from a past commit
+- made some different changes
+
+&gt; where in the tree the changes happenes?
+&gt; can you merge that branch with the current?
+]
+
+<div class="countdown" id="timer_61015c9b" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+
+# .orange[Live demo]
+
+.left[
+&gt; WARNING: deleating a branch
+
+what can happen?
+
+.can-edit.key-branch-delete[
+- thing one
+- thing two
+]
+]
+
+
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+# .orange[GitHub]
+
+---
+
+# .orange[GitHub]
+
+
+- remote platform hosting git repository
+
+- backup
+
+- collaboration
+
+
+
+---
+
+# .orange[Account, check and setup]
+
+- GitKraken
+
+  - link ssh key to GitHub
+
+- R
+
+  - {remotes}
+    - `remotes::install_github()`
+    
+  - {usethis}
+    - `usethis::create_github_token()`
+    
+  - {gitcreds}
+    - `gitcreds::gitcreds_get()`
+    - `gitcreds::gitcreds_set()`
+    - `gitcreds::gitcreds_get()$password`
+
+
+
+
+---
+
+# .orange[GitHub: collaborating]
+
+- Collaborators
+
+- Issues'tracker
+
+- Pull Request
+
+&lt;br&gt;
+&lt;br&gt;
+
+- (Forks)
+
+
+---
+class: inverse, middle, center, hide-count
+
+
+# .orange[Live demo]
+
+.left[
+- Issue
+- Pull Request
+]
+
+---
+class: inverse, middle, center, hide-count
+
+
+# .orange[Your Turn]
+
+.left[
+- create an issue
+
+- Pull Request a branch in your own project
+
+- collaborate or fork a project of one of your peers
+
+- Do some modification
+
+- Pull request
+]
+
+<div class="countdown" id="timer_61015b9c" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+---
+class: inverse, center, middle, hide-count
+
+# Thanks!
+
+# <span>&lt;i class="fas  fa-thumbs-up fa-5x faa-float animated "&gt;&lt;/i&gt;</span>
+
+&lt;br&gt;
+
+.right[
+[<span>&lt;i class="fas  fa-envelope faa-passing animated "&gt;&lt;/i&gt;</span>](mailto:corrado.lanera@ubep.unipd.it) [corrado.lanera@ubep.unipd.it](mailto:corrado.lanera@ubep.unipd.it)
+
+[<span>&lt;i class="fas  fa-calendar-check faa-flash animated "&gt;&lt;/i&gt;</span>](https://calendly.com/corradolanera) [calendly.com/corradolanera](https://calendly.com/corradolanera)
+
+]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
