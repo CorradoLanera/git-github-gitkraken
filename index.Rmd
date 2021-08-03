@@ -57,7 +57,7 @@ class: center, top, bg_title, hide-count
 
 .orange[Master MLT]<br><br>--- University of Padova
 
-\- Zoom, 2021/07/28 -
+\- Zoom, 2021  07/28 - 08/03
 
 
 
@@ -132,6 +132,9 @@ xaringanExtra::use_editable(expires = 1)
 xaringanExtra::use_tachyons()
 ```
 
+```{r xaringanExtra-freezeframe, echo=FALSE}
+xaringanExtra::use_freezeframe()
+```
 
 
 ---
@@ -167,11 +170,23 @@ class: hide-count
 
 # .orange[Outline]
 
-- Git
+- 
+```{r out.width = "10%", echo = FALSE}
+knitr::include_graphics("img/git.png")
+```
+Git
 
-- GitKraken
+- 
+```{r out.width = "10%", echo = FALSE}
+knitr::include_graphics("img/gitkraken.png")
+```
+GitKraken
 
-- GitHub
+- 
+```{r out.width = "10%", echo = FALSE}
+knitr::include_graphics("img/github.png")
+```
+GitHub
 
 
 
@@ -213,6 +228,15 @@ log della storia del progetto e delle sue diramazioni
 
 - A GUI for git (and GitHub)
 
+```{r out.width = "100%", echo = FALSE}
+knitr::include_graphics("img/diff-views.gif")
+```
+
+
+
+<small><small>
+https://blog.axosoft.com/wp-content/uploads/2020/02/diff-views.gif
+</small></small>
 
 
 ---
@@ -220,7 +244,7 @@ class: inverse, middle, hide-count
 
 # .orange[Installation, check and setup]
 
-- Git
+- Git (https://git-scm.com/)^[If you need this tutorial, you can safely install **git** using all the installer's default options.]
 
 - GitKraken (https://www.gitkraken.com/invite/fas3vkyk)
 
@@ -232,12 +256,16 @@ class: inverse, middle, hide-count
 # Workspace, stage, and commits
 
 - The workspace is the place in which you work
-
 - The stage is the place in which things are ready to be committed
-
 - Commits are snapshot of your project
 
+```{r out.width = "90%", echo = FALSE}
+knitr::include_graphics("img/git-workflow.jpg")
+```
 
+<small><small>
+https://slideplayer.com/slide/14860254/90/images/13/Git+Workflow+Repository%3A+all+your+projects+files+are+stored+here..jpg
+</small></small>
 
 ---
 class: inverse, middle, center, hide-count
@@ -267,10 +295,11 @@ class: inverse, middle, center, hide-count
 # .orange[Your turn]
 
 .left[
-- create a project
-- create a file
-- stage that file
+- create a git project from GitKraken
+- create a file inside the repository's fodler
+- add to the stage that file from GitKraken
 - modify the file
+- look at GitKraken
 
 > what happened?
 
@@ -278,7 +307,7 @@ class: inverse, middle, center, hide-count
 
 > what if you unstage the old staged file?
 
-- commit the file
+- add a (Summary one-line) message and commit the file from GitKraken
 ]
 
 
@@ -311,13 +340,15 @@ class: inverse, middle, center, hide-count
   - subtasks
   - ...
   
-## Practical examples
-
-.can-edit.key-branch-example[
-- thing one
-- thing two
+.center[
+```{r out.width = "70%", echo = FALSE}
+knitr::include_graphics("img/git-branches-merge.png")
+```
 ]
 
+<small><small>
+https://www.nobledesktop.com/image/gitresources/git-branches-merge.png
+</small></small>
 
 ---
 class: inverse, middle, center, hide-count
@@ -347,13 +378,21 @@ class: inverse, middle, center, hide-count
 
 
 .left[
-- add some commits
-- create a branch
-- add some commit
-- merge the two branches
+- (create a git project with some content))
 
-- start a branch from a past commit
-- made some different changes
+ 
+
+- add some commits
+- create a branch and check it out
+- add some commit to it
+- merge it with the main branch
+
+ 
+
+- start a branch from a previous commit
+- made some different changes to some files
+- merge the new branch with the master one
+- resolve potential conflicts
 
 > where in the tree the changes happenes?
 > can you merge that branch with the current?
@@ -376,11 +415,15 @@ class: inverse, middle, center, hide-count
 .left[
 > WARNING: deleating a branch
 
-what can happen?
 
+
+What can happen?
+
+Please, suggests:
 .can-edit.key-branch-delete[
-- thing one
-- thing two
+- If the branch is already merged: 
+
+- If the branch is not merged yet: 
 ]
 ]
 
@@ -399,52 +442,61 @@ class: inverse, middle, center, hide-count
 # .orange[GitHub]
 
 
-- remote platform hosting git repository
+.center[
+```{r out.width = "100%", echo = FALSE}
+knitr::include_graphics("img/what-is-github.png")
+```
+]
 
-- backup
-
-- collaboration
+<small><small>
+https://static.javatpoint.com/tutorial/git/images/what-is-github.png
+</small></small>
 
 
 
 ---
+class: inverse, middle, center, hide-count
 
 # .orange[Account, check and setup]
 
+.left[
 - GitKraken
 
-  - link ssh key to GitHub
+  - link GitKraken to GitHub, adding ssh key to GitHub too
+    (from `<GitKraken>/file/preferences/integration`)
 
 - R
 
-  - {remotes}
-    - `remotes::install_github()`
+  - {remotes} to install remotes (e.g., from GitHub) packages
+     - `remotes::install_github(<username/repo>)`
     
-  - {usethis}
-    - `usethis::create_github_token()`
+  - {usethis} utilities for everyday R workflows
+     - `usethis::create_github_token()`
     
-  - {gitcreds}
-    - `gitcreds::gitcreds_get()`
-    - `gitcreds::gitcreds_set()`
-    - `gitcreds::gitcreds_get()$password`
-
-
+  - {gitcreds} R interface for the git's credential manager
+     - `gitcreds::gitcreds_get()`
+     - `gitcreds::gitcreds_set()`
+     - `gitcreds::gitcreds_get()$password`
+]
 
 
 ---
 
 # .orange[GitHub: collaborating]
 
-- Collaborators
+- Issue tracker
 
-- Issues'tracker
+- Pull requests
 
-- Pull Request
+.center[
+```{r out.width = "100%", echo = FALSE}
+knitr::include_graphics("img/Github-pullrequest.png")
+```
+]
 
-<br>
-<br>
-
-- (Forks)
+<small><small>
+https://cdn.crunchify.com/wp-content/uploads/2017/09/Github-WorkFlow-Tips-Crunchify-Tips.png
+</small></small>
 
 
 ---
@@ -458,6 +510,7 @@ class: inverse, middle, center, hide-count
 - Pull Request
 ]
 
+
 ---
 class: inverse, middle, center, hide-count
 
@@ -465,15 +518,68 @@ class: inverse, middle, center, hide-count
 # .orange[Your Turn]
 
 .left[
-- create an issue
 
-- Pull Request a branch in your own project
+1. create an issue
+2. create a branch to resolve the issue
+3. solve it
 
-- collaborate or fork a project of one of your peers
 
-- Do some modification
+- add a message, commit, **push**
 
-- Pull request
+ 
+
+- repeat 1-3
+- add a message, commit, create a **pull-request**
+
+]
+
+```{r, echo=FALSE}
+countdown(minutes = 5)
+```
+
+
+---
+
+# .orange[GitHub: collaborating]
+
+.center[
+```{r out.width = "100%", echo = FALSE}
+knitr::include_graphics("img/github-collaboration.png")
+```
+]
+
+<small><small>
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPgnTW0xIg12tiOVCCaKYuRfebp6mrncxJYO4Hrv1cnIePhv3fxBfyczTdoJnLkgK5CM&usqp=CAU
+</small></small>
+
+
+
+
+---
+class: inverse, middle, center, hide-count
+
+
+# .orange[Your Turn]
+
+.left[
+
+### First phase (as contributors)
+- Fork a project of one of your colleagues
+- Do some modification to the forked project 
+- Create a pull request
+
+### Second phase (as owner)
+- Review the pull request
+- possibly start a conversation to it or request some modification
+- when you are satisfy accept the pull-request and merge the branch
+
+### Third phase (as contributor)
+- keep updated (fetch-all / pull) the forked project
+
+
+> How many remotes have a forked project?
+
+
 ]
 
 ```{r, echo=FALSE}
@@ -484,7 +590,7 @@ countdown(minutes = 10)
 ---
 class: inverse, center, middle, hide-count
 
-# Thanks!
+# Congratulations and Thanks!
 
 # `r anicon::faa('thumbs-up', animate='float', size=5)`
 
